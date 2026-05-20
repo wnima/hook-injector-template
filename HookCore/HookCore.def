@@ -1,0 +1,19 @@
+LIBRARY HookCore
+EXPORTS
+    InitializeHooks
+    ApplyHookConfiguration
+    CleanupHooks
+    InstallMessageBoxHook
+    UninstallMessageBoxHook
+    InstallCreateFileHook
+    UninstallCreateFileHook
+    GetHookCount
+    GetAddressHookCount
+    GetHookNames
+    IsHookActive
+    SetTargetAddress
+    GetTargetAddress
+    InstallMyAddressHook
+    UninstallMyAddressHook
+    CreateControlInspectorWindow
+    DestroyControlInspectorWindow

@@ -1,0 +1,48 @@
+# Build output
+Debug/
+Release/
+x64/
+x86/
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+*.pdb
+
+# Object files
+*.obj
+*.o
+*.lo
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.apk
+*.tlog
+*.lastbuildstate
+*.idb
+*.pch
+*.ipch
+*.dbmdl
+*.cachefile
+
+# Resource
+*.aps
+
+# NuGet
+packages/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+.claude/
+CLAUDE.md
