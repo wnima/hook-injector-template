@@ -1,30 +1,29 @@
 #include "pch.h"
 #include "Hooks.h"
 
-HMODULE g_hHookCoreModule = nullptr;
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
+class CHookCoreApp : public CWinApp
 {
-    UNREFERENCED_PARAMETER(lpReserved);
+public:
+	CHookCoreApp() {}
 
-    switch (ul_reason_for_call)
-    {
-    case DLL_PROCESS_ATTACH:
-        g_hHookCoreModule = hModule;
-        DisableThreadLibraryCalls(hModule);
-        OutputDebugStringA("[HookCore] DLL loaded\n");
-        if (InitializeHooks())
-        {
-            ApplyHookConfiguration();
-        }
-        CreateControlInspectorWindow();
-        break;
+	virtual BOOL InitInstance() override
+	{
+		OutputDebugStringA("[HookCore] DLL loaded\n");
+		if (InitializeHooks())
+		{
+			ApplyHookConfiguration();
+		}
+		CreateControlInspectorWindow();
+		return TRUE;
+	}
 
-    case DLL_PROCESS_DETACH:
-        DestroyControlInspectorWindow();
-        CleanupHooks();
-        OutputDebugStringA("[HookCore] DLL unloaded\n");
-        break;
-    }
-    return TRUE;
-}
+	virtual int ExitInstance() override
+	{
+		DestroyControlInspectorWindow();
+		CleanupHooks();
+		OutputDebugStringA("[HookCore] DLL unloaded\n");
+		return CWinApp::ExitInstance();
+	}
+};
+
+CHookCoreApp theApp;
